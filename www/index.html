@@ -8,6 +8,7 @@
 
   <link href="lib/ionic/css/ionic.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <link href="lib/angular-chart.js/dist/angular-chart.css" rel="stylesheet">
 
   <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -18,9 +19,19 @@
 
   <!-- cordova script (this will be a 404 during development) -->
   <script src="cordova.js"></script>
+  
+  <!-- chart.js -->
+  <script src="lib/Chart.js/Chart.js"></script>
+  <script src="lib/angular-chart.js/dist/angular-chart.js"></script>
 
   <!-- your app's js -->
+  <script src="js/controllers/starterControllers.js"></script>
+  <script src="js/controllers/LobbyCtrl.js"></script>
+  <script src="js/controllers/questionsCtrl.js"></script>
+  <script src="js/services/questionsService.js"></script>
+  <script src="js/services/answersService.js"></script>
   <script src="js/app.js"></script>
+  
 </head>
 
 <body ng-app="starter">
