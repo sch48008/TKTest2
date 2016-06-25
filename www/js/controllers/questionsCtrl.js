@@ -4,7 +4,7 @@ angular.module('starter.controllers')
 
 
             $scope.qNumber = $stateParams.questionID;
-            
+
             console.log("inside QuestionsCtrl");
             console.log("question number = " + $scope.qNumber);
 
@@ -44,7 +44,7 @@ angular.module('starter.controllers')
                 $ionicHistory.nextViewOptions({
                     historyRoot: true
                 });
-                $state.go('lobby');
+                $state.go('results');
             }
         }
     ]);
