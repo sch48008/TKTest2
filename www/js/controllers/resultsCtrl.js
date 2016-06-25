@@ -1,6 +1,9 @@
 angular.module('starter.controllers')
-    .controller('ResultsCtrl', ['$scope', 'TKAnswersService', '$ionicHistory', '$state',
-        function($scope, TKAnswersService, $ionicHistory, $state) {
+    .controller('ResultsCtrl', ['$scope', 'TKAnswersService', '$ionicHistory', '$state', 'TKResultsButtonService',
+        function($scope, TKAnswersService, $ionicHistory, $state, TKResultsButtonService) {
+            
+            // a boolean used simply to show or hide the menu button
+            $scope.shouldShowButton = TKResultsButtonService.getShouldShowMenuButton();
 
             // back button handler
             $scope.menuButtonTapped = function() {

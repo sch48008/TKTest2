@@ -4,7 +4,7 @@ angular.module('TKTestQuestions', [])
         var service = this;
         var questions = [];
 
-        // revise this
+        // get all the questions from the json file and place them in the "questions[]" array.
         service.all = function () {
         $http.get('files/questions.json')
         .then(function(response){
@@ -17,21 +17,20 @@ angular.module('TKTestQuestions', [])
         
 
 
-
-        // I'm not understanding this method.  Where is the "questions" array declared?
+        // Get the two questions that have the right questionID (1,2,3,etc.)
         service.getQuestion = function(questionID) {
-            
             
             var results = [];
 
+            // iterate thru the entire array of 60 questions
             questions.forEach(function(question) {
-
-                console.log(question);
-
+                
                 //Search for questions with the specified question ID
                 if (question.Question_Number == questionID)
                     results.push(question);
             });
+            
+            // This should return an array containing two questions
             return results;
         };
     }]);
