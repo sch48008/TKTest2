@@ -1,5 +1,5 @@
 angular.module('TKTestAnswers', [])
-    .service('TKAnswersService', ['$window', function($window) {
+    .service('TKAnswersService', ['$window', 'TestResultsRest', function($window, TestResultsRest) {
         var service = this;
         var answerCategories = {
             "competing": 0,
@@ -38,13 +38,22 @@ angular.module('TKTestAnswers', [])
 
         // Every time we finish a test we save the set of answers to an array in $window.localStorage as a record of past tests.
         service.saveTest = function(test) {
-            var tempTests = $window.localStorage.tests === undefined ? [] : JSON.parse($window.localStorage.tests);
-            tempTests.push(test);
-            $window.localStorage.tests = JSON.stringify(tempTests);
+            
+            // using back-end now
+            TestResultsRest.save(test);
         };
 
         service.getTests = function() {
-            return JSON.parse($window.localStorage.tests);
+            
+            return TestResultsRest.getAll()
+            .then(function(res){
+                console.log(res);
+                return res.data;
+            }, function(err) {
+                console.log(err);
+                return err;
+            });
+            
         };
 
         service.setAnswers = function(answers) {

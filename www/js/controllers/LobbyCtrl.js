@@ -10,7 +10,7 @@ angular.module('starter.controllers')
                 TKAnswersService.resetAnswers();
                 
                 $state.go('question', {
-                    questionID: 1
+                    questionID: 29
                 });
             };
         }

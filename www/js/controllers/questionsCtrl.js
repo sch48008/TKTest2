@@ -4,7 +4,7 @@ angular.module('starter.controllers')
 
 
             $scope.qNumber = $stateParams.questionID;
-            
+
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // Notice that the code block below runs every time the controller is loaded.
             // So every time we answer a question by clicking A or B it goes to the next page and runs this code again.
@@ -17,12 +17,12 @@ angular.module('starter.controllers')
                 if (infoDict.Answer_ID === "B")
                     $scope.questionB = infoDict;
             });
-            
+
 
             // When the user selects one of the questions (choices).
             $scope.buttonClicked = function(option) {
                 var category = $scope["question" + option].Style;
-                
+
                 // This increments the total tally for that personality style
                 TKAnswersService.saveAnswer(category);
 
@@ -44,29 +44,29 @@ angular.module('starter.controllers')
                     TKAnswersService.eraseLastAnswer();
                 $ionicHistory.goBack();
             };
-            
+
 
             // This method processes the answers, saves the test, and goes to the results page.
             function performRequest() {
-                
+
                 // simply returns and copies the "answerCategories" object.
                 var answersDict = angular.copy(TKAnswersService.getAnswers());
-                
+
                 // add a date stamp to the results
                 var date = new Date();
                 answersDict["createDate"] = date.toUTCString();
-                
+
                 // save the test
                 TKAnswersService.saveTest(answersDict);
-                
+
                 // This sets a flag to show or not show the menu button
                 TKResultsButtonService.setShouldShowMenuButton(true);
-                
+
                 // This affects the "back" functionality for the next page to be visited.
                 $ionicHistory.nextViewOptions({
                     historyRoot: true
                 });
-                
+
                 // go to the lobby page
                 $state.go('lobby');
             }
