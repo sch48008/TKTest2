@@ -1,22 +1,22 @@
 angular.module('RESTServices')
-.service ('TestResultsRest', ['$http', function($http){
+.service ('QuestionsRest', ['$http', function($http){
     
-    var TestResultsRest = this;
-    var url = 'https://strongloop-backend-2-bitflipper86.c9users.io/api/TestResults';
+    var QuestionsRest = this;
+    var url = 'https://strongloop-backend-2-bitflipper86.c9users.io/api/Questions';
     
-    TestResultsRest.save = function(test) {
+    QuestionsRest.save = function(test) {
         
         return $http({
             
             url: url,
             method: 'POST',
-            data: test
+            data: ''
             
         });
         
     };
     
-    TestResultsRest.getAll = function() {
+    QuestionsRest.getAll = function() {
         
         return $http({
             

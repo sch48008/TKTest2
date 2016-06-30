@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'TKTestAnswers', 'chart.js', 'TKResultsButton', 'rest.services'])
+angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'TKTestAnswers', 'chart.js', 'TKResultsButton', 'RESTServices'])
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
       if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -24,8 +24,23 @@ angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'T
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
-      .state('lobby', {
+      .state('landing', {
         url: '/',
+        templateUrl: 'templates/landing.html',
+        controller: 'LandingCtrl'
+      })
+      .state('register', {
+        url: '/register',
+        templateUrl: 'templates/register.html',
+        controller: 'RegisterCtrl'
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'templates/login.html',
+        controller: 'LoginCtrl'
+      })      
+      .state('lobby', {
+        url: '/lobby',
         templateUrl: 'templates/lobby.html',
         controller: 'LobbyCtrl'
       })
