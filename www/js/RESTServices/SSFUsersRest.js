@@ -12,28 +12,15 @@ angular.module('RESTServices', [])
                 data: newUserData
             });
         };
-
-        SSFUsersRest.save = function() {
-
+        
+        // login a user
+        SSFUsersRest.login = function(loginData) {
             return $http({
-
-                url: url,
+                url: url + "/login",
                 method: 'POST',
-                data: ''
-
+                data: loginData
             });
-
         };
-
-        SSFUsersRest.getAll = function() {
-
-            return $http({
-
-                url: url,
-                method: 'GET'
-
-            });
-
-        };
+                
 
     }])

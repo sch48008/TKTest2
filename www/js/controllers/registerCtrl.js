@@ -20,10 +20,10 @@ angular.module('starter.controllers')
                                 $state.go('lobby');
                             }
                             else if (response.status == 422) {
-                                alert('Sorry, that email value is already registered.')
+                                alert('Sorry, that email value is already registered.');
                             }
                             else if (response.status == 404) {
-                                alert('Sorry, could not connect to server.')
+                                alert('Sorry, could not connect to server.');
                             }
                         }, function(error) {
 

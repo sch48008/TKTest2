@@ -39,6 +39,9 @@ angular.module('TKTestAnswers', [])
         // Every time we finish a test we save the set of answers to an array in $window.localStorage as a record of past tests.
         service.saveTest = function(test) {
             
+            // set user id
+            test.userID = $window.localStorage.userID;
+            
             // using back-end now
             TestResultsRest.save(test);
         };
