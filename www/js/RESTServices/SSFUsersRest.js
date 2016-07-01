@@ -16,11 +16,11 @@ angular.module('RESTServices', [])
         // login a user
         SSFUsersRest.login = function(loginData) {
             return $http({
-                url: url + "/login",
+                url: url + '/login',
                 method: 'POST',
                 data: loginData
             });
         };
                 
 
-    }])
+    }]);

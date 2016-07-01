@@ -15,8 +15,8 @@ angular.module('starter.controllers')
                         .then(function(response) {
                             // handle different responses and decide what happens next
                             if (response.status == 200) {
-                                $window.localStorage.token = response.data.token;
-                                $window.localStorage.userID = response.data.id;
+                                $window.localStorage.token = response.data.id;
+                                $window.localStorage.userID = response.data.userId;
                                 $state.go('lobby');
                             }
                             else if (response.status == 404) {

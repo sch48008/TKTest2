@@ -50,7 +50,6 @@ angular.module('TKTestAnswers', [])
             
             return TestResultsRest.getAll()
             .then(function(res){
-                console.log(res);
                 return res.data;
             }, function(err) {
                 console.log(err);
