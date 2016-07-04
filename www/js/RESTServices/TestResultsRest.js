@@ -4,15 +4,14 @@ angular.module('RESTServices')
     var TestResultsRest = this;
     var url = 'https://strongloop-backend-2-bitflipper86.c9users.io/api/TestResults';
     
-    // Save test results
-    TestResultsRest.save = function(test) {
+    // Save test results for one test
+    TestResultsRest.saveTest = function(test, token) {
         
         return $http({
-            
             url: url,
             method: 'POST',
-            data: test
-            
+            data: test,
+            headers: {'Authorization': token}
         });
         
     };
@@ -24,11 +23,9 @@ angular.module('RESTServices')
         var filter = "?filter[where][userID]=" + userID;
         
         return $http({
-            
             url: url + filter,
             method: 'GET',
             params: {access_token: token}
-            
         });
         
     };
@@ -44,4 +41,4 @@ angular.module('RESTServices')
         //     });
         // };    
     
-}])
+}]);

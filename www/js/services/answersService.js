@@ -35,40 +35,47 @@ angular.module('TKTestAnswers', [])
         service.eraseLastAnswer = function() {
             answerCategories[categoriesStack.pop().toLowerCase()]--;
         };
-
-        // Every time we finish a test we save the set of answers to an array in $window.localStorage as a record of past tests.
+        
+        
+        ////////////////////////////////////////////////////////////////////
+        // Every time we finish a test we save the test to the database.
+        ////////////////////////////////////////////////////////////////////        
         service.saveTest = function(test) {
-            
+
             // set user id
             test.userID = $window.localStorage.userID;
-            
-            // using back-end now
-            TestResultsRest.save(test);
-        };
-        
 
+            // using back-end now.  A token is required for authorization.
+            TestResultsRest.saveTest(test, $window.localStorage['token']);
+        };
+
+
+        ////////////////////////////////////////////////////////////////////
         // When the user preses the "My Results" button
+        ////////////////////////////////////////////////////////////////////        
         service.getAllTestsByUser = function() {
-            
+
             return TestResultsRest.getAllTestsByUser($window.localStorage['userID'], $window.localStorage['token'])
-            .then(function(res){
-                if(res.status == 200){
-                    return res.data;
-                } else {
-                    alert("Error occurred.  Error status = " + res.status);
-                }
-                
-            }, function(err) {
-                
-                console.log(err);
-                if(err.status == 404){
-                    alert("server address was not found.");
-                } else if (err.status == 500){
-                    alert("server appears to be offline.");
-                }
-                return err;
-            });
-            
+                .then(function(res) {
+                    if (res.status == 200) {
+                        return res.data;
+                    }
+                    else {
+                        alert("Error occurred.  Error status = " + res.status);
+                    }
+
+                }, function(err) {
+
+                    console.log(err);
+                    if (err.status == 404) {
+                        alert("server address was not found.");
+                    }
+                    else if (err.status == 500) {
+                        alert("server appears to be offline.");
+                    }
+                    return err;
+                });
+
         };
 
         service.setAnswers = function(answers) {
