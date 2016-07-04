@@ -45,14 +45,27 @@ angular.module('TKTestAnswers', [])
             // using back-end now
             TestResultsRest.save(test);
         };
+        
 
-        service.getTests = function() {
+        // When the user preses the "My Results" button
+        service.getAllTestsByUser = function() {
             
-            return TestResultsRest.getAll()
+            return TestResultsRest.getAllTestsByUser($window.localStorage['userID'], $window.localStorage['token'])
             .then(function(res){
-                return res.data;
+                if(res.status == 200){
+                    return res.data;
+                } else {
+                    alert("Error occurred.  Error status = " + res.status);
+                }
+                
             }, function(err) {
+                
                 console.log(err);
+                if(err.status == 404){
+                    alert("server address was not found.");
+                } else if (err.status == 500){
+                    alert("server appears to be offline.");
+                }
                 return err;
             });
             

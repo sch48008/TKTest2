@@ -65,7 +65,7 @@ angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'T
         controller: 'HistoryCtrl',
         resolve: {
           tests: ['TKAnswersService', function(TKAnswersService) {
-            return TKAnswersService.getTests();
+            return TKAnswersService.getAllTestsByUser();
           }]
         }
       });
