@@ -30,6 +30,8 @@ angular.module('RESTServices')
         
     };
     
+    // Note: Does "params: {access_token: token}" do the same thing as "headers: {'Authorization': token}" 
+    
     
         // From February cohort...
         // // This retrieves all of the result sets for a particular user

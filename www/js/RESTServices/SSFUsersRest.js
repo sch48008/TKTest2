@@ -12,7 +12,7 @@ angular.module('RESTServices', [])
                 data: newUserData
             });
         };
-        
+
         // login a user
         SSFUsersRest.login = function(loginData) {
             return $http({
@@ -21,6 +21,17 @@ angular.module('RESTServices', [])
                 data: loginData
             });
         };
-                
+
+        // logout - TODO: not yet implemented in controller
+        SSFUsersRest.logout = function(token) {
+            return $http({
+                url: url + "/logout",
+                method: "POST",
+                headers: {
+                    'Authorization': token
+                }
+            });
+        };
+
 
     }]);
